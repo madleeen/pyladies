@@ -5,30 +5,30 @@
 # kdo da 3 vedle sebe, vyhral
 from random import randrange
 herni_pole= "-" * 20
+symbol=0
+pozice=0
 
 def piskvorky1d(herni_pole):
-    kolo=1
-    symbol=0
-    pozice=0
+    # kolo=1
     konec=False
     symbol=str.upper(input("Zadej symbol hrace(o,x):"))
 
-    while not konec or kolo <21:
+    while not konec:
         pozice=int(input("Zadej cislo pozice(0-19):"))
         tah_hrace(herni_pole, pozice, symbol)
-        print (herni_pole)
         tah_pocitace(herni_pole,symbol)
-        kolo+= 1
 
 def tah(herni_pole, pozice, symbol):
     "Vrátí herní pole s daným symbolem umístěným na danou pozici"
     herni_pole=herni_pole[:pozice] + symbol + herni_pole[pozice + 1:]
     print(herni_pole, "| tah na pozici cislo",pozice,"s hracem", symbol)
+    vyhodnot(herni_pole)
     return herni_pole
 
 def tah_hrace(herni_pole, pozice, symbol):
     "Vrátí herní pole s daným symbolem umístěným na danou pozici"
     tah(herni_pole,pozice,symbol)
+    return herni_pole
 
 def tah_pocitace(herni_pole,symbol):
     "Vrátí herní pole se zaznamenaným tahem počítače"
@@ -43,6 +43,7 @@ def tah_pocitace(herni_pole,symbol):
         while "-" not in herni_pole[cislo:]:
             cislo = randrange(0,19)
     tah(herni_pole,cislo,symbol_pocitace)
+    return herni_pole
 
 def vyhodnot(herni_pole):
     if "XXX" in herni_pole:
