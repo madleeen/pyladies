@@ -14,20 +14,21 @@ def piskvorky1d(herni_pole):
     symbol=str.upper(input("Zadej symbol hrace(o,x):"))
 
     while not konec:
-        pozice=int(input("Zadej cislo pozice(0-19):"))
-        tah_hrace(herni_pole, pozice, symbol)
-        tah_pocitace(herni_pole,symbol)
+        herni_pole = tah_hrace(herni_pole, pozice, symbol)
+        konec = vyhodnot(herni_pole)
+        herni_pole = tah_pocitace(herni_pole,symbol)
+        konec = vyhodnot(herni_pole)
 
 def tah(herni_pole, pozice, symbol):
     "Vrátí herní pole s daným symbolem umístěným na danou pozici"
     herni_pole=herni_pole[:pozice] + symbol + herni_pole[pozice + 1:]
     print(herni_pole, "| tah na pozici cislo",pozice,"s hracem", symbol)
-    vyhodnot(herni_pole)
     return herni_pole
 
 def tah_hrace(herni_pole, pozice, symbol):
     "Vrátí herní pole s daným symbolem umístěným na danou pozici"
-    tah(herni_pole,pozice,symbol)
+    pozice=int(input("Zadej cislo pozice(0-19):"))
+    herni_pole = tah(herni_pole,pozice,symbol)
     return herni_pole
 
 def tah_pocitace(herni_pole,symbol):
@@ -42,7 +43,7 @@ def tah_pocitace(herni_pole,symbol):
         cislo = randrange(0,19)
         while "-" not in herni_pole[cislo:]:
             cislo = randrange(0,19)
-    tah(herni_pole,cislo,symbol_pocitace)
+    herni_pole = tah(herni_pole,cislo,symbol_pocitace)
     return herni_pole
 
 def vyhodnot(herni_pole):
@@ -58,6 +59,7 @@ def vyhodnot(herni_pole):
     else:
         #print("Hra ještě neskončila.")
         konec=False
+    return konec
 
 
 piskvorky1d(herni_pole)
