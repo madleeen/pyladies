@@ -17,8 +17,8 @@ def piskvorky1d(herni_pole):
 
     while not konec:
         pozice=int(input("Zadej cislo pozice(0-19):"))
-        tah_hrace(herni_pole, pozice, symbol)
-        tah_pocitace(herni_pole,symbol)
+        herni_pole = tah_hrace(herni_pole, pozice, symbol)
+        herni_pole = tah_pocitace(herni_pole,symbol)
 
 def tah(herni_pole, pozice, symbol):
     "Vrátí herní pole s daným symbolem umístěným na danou pozici"
@@ -29,7 +29,7 @@ def tah(herni_pole, pozice, symbol):
 
 def tah_hrace(herni_pole, pozice, symbol):
     "Vrátí herní pole s daným symbolem umístěným na danou pozici"
-    tah(herni_pole,pozice,symbol)
+    herni_pole = tah(herni_pole,pozice,symbol)
     return herni_pole
 
 def tah_pocitace(herni_pole,symbol):
