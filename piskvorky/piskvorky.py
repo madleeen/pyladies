@@ -8,9 +8,11 @@ herni_pole= "-" * 20
 symbol=0
 pozice=0
 
+konec = False
+
 def piskvorky1d(herni_pole):
     # kolo=1
-    konec=False
+    global konec
     symbol=str.upper(input("Zadej symbol hrace(o,x):"))
 
     while not konec:
@@ -42,10 +44,12 @@ def tah_pocitace(herni_pole,symbol):
         cislo = randrange(0,19)
         while "-" not in herni_pole[cislo:]:
             cislo = randrange(0,19)
-    tah(herni_pole,cislo,symbol_pocitace)
+    herni_pole = tah(herni_pole,cislo,symbol_pocitace)
     return herni_pole
 
 def vyhodnot(herni_pole):
+    global konec
+
     if "XXX" in herni_pole:
         print("Vyhrál hráč X!")
         konec=True
